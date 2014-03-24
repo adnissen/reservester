@@ -7,6 +7,7 @@
       <th>Description</th>
       <th>Phone number</th>
       <th>Location</th>
+      <th>Image</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,6 +21,8 @@
         <td><%= restaurant.description %></td>
         <td><%= restaurant.phone_number %></td>
         <td><%= restaurant.location %></td>
+        <td><img src="<%= restaurant.image.thumbnail.url %>" alt=""></td>
+</td>
         <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
         <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>

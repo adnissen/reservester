@@ -12,7 +12,13 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'rmagick'
+gem 'mini_magick'
+
+gem 'carrierwave'
+
+gem "fog", "~> 1.3.1"
+
+gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
