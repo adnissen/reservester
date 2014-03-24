@@ -16,7 +16,9 @@ gem 'mini_magick'
 
 gem 'carrierwave'
 
-gem "fog", "~> 1.3.1"
+gem 'fog', "~> 1.3.1"
+
+gem 'devise'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
