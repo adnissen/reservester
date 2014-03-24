@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
+  before_filter :authenticate_owner!, :except => [:index, :show]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -25,6 +27,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.owner_id = current_owner.id
 
     respond_to do |format|
       if @restaurant.save
@@ -62,13 +65,13 @@ class RestaurantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :phone_number, :location, :image)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :description, :phone_number, :location, :image)
+  end
 end
